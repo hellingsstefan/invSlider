@@ -1,0 +1,4 @@
+invSlider
+=========
+
+flexible content slider
