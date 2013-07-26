@@ -1,0 +1,63 @@
+@import "compass/utilities";
+@import "compass/css3";
+
+
+// vars
+$base-font-family: 'Arial', sans-serif;
+$base-font-size: 14px;
+$base-line-height: 18px;
+$baseline: $base-line-height / 3;
+
+$white:         #fff;
+$black:         #000;
+$blue:          #234e95;
+$dark-blue:     #062f62;
+$header-blue:   #005296;
+$text-color:    #606060;
+$link-color:    #0e4888;
+
+@function b($amount: 1) {
+    @return $baseline * $amount;
+}
+
+// Base styles
+@import 'core/normalize.scss';
+@import 'core/h5bp.scss';
+
+// Extra's
+@import 'core/helpers.scss';
+@import 'components/fancybox.scss';
+@import 'blueprint/buttons';
+
+// Components
+@import 'components/typography.scss';
+@import 'components/forms.scss';
+@import 'components/inv-slider.scss';
+
+
+// Custom Styles
+html, body {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    color: $text-color;
+}
+
+html {
+    height: 100%;
+}
+
+.wrapper {
+    width: 600px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    background-color: $white;
+}
+
+// floats
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}

@@ -1,0 +1,1 @@
+/*jslint vars: true, devel: true *//*global $: false */$(document).ready(function(){$(".inv-slider").invSlider({auto:!1,pager:!0,pagerContainer:"#pagerContainer"}).addClass("chainabilityMaintained");$(".inv-slider2").invSlider({auto:!0,pager:!0,prevControl:".prev",nextControl:".next"})});

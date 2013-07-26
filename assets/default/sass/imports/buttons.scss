@@ -1,0 +1,82 @@
+// Mixins
+// Default button
+@mixin btn($bg-start: #2e5e9f, $bg-end: #1f4888, $color: #fff, $border: 1px solid #78a09b, $radius: 3px, $padding: 14px 12px) {
+    @include border-radius($radius);
+    @include background-image(linear-gradient($bg-start, $bg-end));
+    margin: 0;
+    padding: $padding;
+    display: inline-block;
+    border: $border;
+    color: $color;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover, &:focus {
+        color: $color;
+        @include background-image(linear-gradient($bg-end, $bg-start));
+    }
+    &:active {
+        color: $color;
+        @include background-image(linear-gradient(darken($bg-end,10%), darken($bg-start,10%)));
+    }
+}
+
+.btn, input[type="submit"], button {
+    @include btn();
+    margin: 0 0 20px 20px;
+}
+
+.button-group {
+    @include clearfix();
+    @include box-sizing(border-box);
+    @extend .spacing;
+    position: relative;
+    width: 100%;
+    h1, h2, h3, h4, h5, h6 {
+        margin-left: -20px;
+    }
+    .btn {
+        margin: 0 5px 10px 0;
+        // &:first-child {
+        //     margin-left: 0px;
+        // }
+    }
+    &.center {
+        text-align: center;
+    }
+}
+
+.btn-menu {
+    @include box-shadow(2px 0 0 #1a64a1);
+    @include border-radius(0);
+    width: 54px;
+    height: 54px;
+    margin: -9px 0 0 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    float: left;
+    border-right: 1px solid #062f61;
+    border-left: 1px solid #1a64a1;
+    .btn-menu-bar {
+        @include border-radius(3px);
+        @include box-shadow(0 0 1px #00437a);
+        width: 19px;
+        height: 2px;
+        margin: 5px auto 5px auto;
+        border: 1px solid #fff;
+        border-bottom-color: rgba(#6b6b6b, 0.60);
+        display: block;
+        background: #fff;
+    }
+}
+
+.btn.btn-filter, .btn.btn-search {
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
+.btn.btn-search {
+    @include btn($bg-start: #fbfbfb, $bg-end: #f3f3f3, $color: #fff, $border: 1px solid #e9e9e9, $radius: 3px, $padding: 6px 9px 8px 8px);
+    top: 5px;
+}

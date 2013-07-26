@@ -1,0 +1,60 @@
+/* =============================================================================
+   Variables
+   ========================================================================== */
+
+// Colors
+@black:                 #000;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #eee;
+@white:                 #fff;
+
+// Scaffolding
+@bodyBackground:        @white;
+@textColor:             @grayDark;
+
+// Links
+@linkColor:             #08c;
+@linkColorHover:        darken(@linkColor, 15%);
+
+// Typography
+@baseFontSize:          12px;
+@baseFontFamily:        "Trebuchet MS", Arial, sans-serif;
+@baseLineHeight:        18px;
+
+@headingsFontFamily:    inherit; // empty to use default, @baseFontFamily
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use default, @textColor
+
+@selectionColor:        #fe57a1;
+
+/* =============================================================================
+   Initial imports
+   ========================================================================== */
+@import 'includes/mixins.less';
+@import 'includes/normalize.less';
+@import 'includes/h5bp.less';
+@import 'includes/forms.less';
+@import 'includes/tables.less';
+
+/* =============================================================================
+   Layout
+   ========================================================================== */
+
+html { font-family: @baseFontFamily; font-size: @baseFontSize; line-height: @baseLineHeight; color: @textColor; background: @bodyBackground; }
+h1, h2, h3, h4, h5, h6 { font-family: @headingsFontFamily; font-weight: @headingsFontWeight; color: @headingsColor; }
+a {
+    color: @linkColor;
+    &:hover, &:active { color: @linkColorHover; }
+}
+
+// Start your code here...
+
+/* =============================================================================
+   Other imports
+   ========================================================================== */
+@import 'includes/helpers.less';
+@import 'includes/print.less';
+@import 'includes/fancybox.less';

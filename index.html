@@ -1,0 +1,137 @@
+<!doctype html>
+<!--[if IE 7 ]> <html lang="en" class="lte-ie9 lte-ie8 lte-ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="lte-ie9 lte-ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="lte-ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns#">
+    <meta charset="utf-8">
+
+    <title>Front-end styleguide - Inventis</title>
+    <meta name="description" content="">
+
+    <!-- iPhone Optimized -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Windows tile settings -->
+    <meta name="application-name" content="Front-end styleguide - Inventis"/>
+    <meta name="msapplication-TileColor" content="#ffffff"/> <!-- optional -->
+    <meta name="msapplication-TileImage" content="assets/default/img/icons/windows-tile-icon-144x144.png"/>
+
+    <!-- Icon for (older) Android devices -->
+    <link rel="apple-touch-icon-precomposed" href="assets/default/img/icons/apple-touch-icon-144x144-precomposed.png" />
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="assets/default/css/main.css" />
+
+    <!-- Modernizr -->
+    <script src="assets/default/js/vendor/modernizr-2.6.2.min.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+
+    <div id="pagerContainer">
+        <!-- code -->
+    </div><!-- /#pagerContainer -->
+    <div class="inv-slider">
+
+        <section>
+            <h1>Slide 1</h1>
+            <h2>Secondary title</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </section>
+
+        <div>
+            <h1>Slide 2</h1>
+            <h2>Secondary title</h2>
+            <h3>Tertiary title</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            <ul>
+                <li>1</li>
+                <li>
+                    2
+                    <ul>
+                        <li>2.1</li>
+                        <li>2.2</li>
+                    </ul>
+                </li>
+                <li>3</li>
+            </ul>
+        </div>
+
+        <section>
+            <h1>Slide 3</h1>
+            <form>
+                <div class="input">
+                    <label for="frm_name">Name:</label>
+                    <input type="text" name="name" id="frm_name" placeholder="e.g. John Doe" />
+                </div>
+                <div class="input">
+                    <label for="frm_email">E-mail:</label>
+                    <input type="email" name="email" id="frm_email" />
+                </div>
+                <div class="input">
+                    <label for="frm_message">Message:</label>
+                    <textarea name="message" id="frm_message"></textarea>
+                </div>
+                <div class="input">
+                    <span class="label">Gender:</span>
+                    <div class="checkboxes">
+                        <input type="radio" name="gender" value="m" id="frm_gender_m" />
+                        <label for="frm_gender_m">Male</label><br />
+                        <input type="radio" name="gender" value="f" id="frm_gender_f" />
+                        <label for="frm_gender_f">Female</label>
+                    </div>
+                </div>
+                <div class="input actions">
+                    <button>Send</button>
+                </div>
+            </form>
+        </section>
+
+        <section>
+            <h1>Slide 4</h1>
+            <img src="http://placekitten.com/600/300" alt="image of a kitten">
+        </section>
+
+        <img src="http://placekitten.com/600/400" alt="image of a kitten">
+
+    </div><!-- /.inv-slider -->
+
+    <div class="clearfix">&nbsp;</div>
+
+    <a href="#" class="prev"> prev </a>
+    <a href="#" class="next"> next </a>
+
+    <div class="clearfix">&nbsp;</div>
+
+    <section class="inv-slider2">
+        <img src="http://placekitten.com/600/400" alt="image of a kitten">
+        <img src="http://placekitten.com/600/420" alt="image of a kitten">
+        <img src="http://placekitten.com/600/440" alt="image of a kitten">
+        <img src="http://placekitten.com/600/460" alt="image of a kitten">
+        <img src="http://placekitten.com/600/480" alt="image of a kitten">
+    </section>
+
+</div><!-- /.wrapper -->
+
+<!-- JavaScript at the bottom for fast page loading -->
+
+<!-- jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/default/js/vendor/jquery-1.9.1.min.js">\x3C/script>')</script>
+
+<!-- Our own Scripts -->
+<script src="assets/default/js/invSlider.dev.js"></script>
+<script src="assets/default/js/main.js"></script>
+
+</body>
+</html>

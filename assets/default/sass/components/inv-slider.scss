@@ -1,0 +1,65 @@
+// Inventis Content Slider
+// Author: Stefan
+
+.inv-slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    // Basic setup
+    > *,
+    .inv-slider-hidden {
+        @include opacity(0);
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        float: none;
+        z-index: 0;
+    }
+
+    .inv-slider-visible {
+        @include opacity(1);
+        position: relative;
+        float: left;
+        z-index: 1;
+    }
+
+    // Transitions
+    > *,
+    .inv-slider-transition-duration {
+        @include transition-property( opacity );
+        @include transition-duration( 1000ms );
+    }
+
+}
+
+// Pager
+.inv-slider-pager {
+    // ... //
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+    li {
+        // ... //
+        padding: 10px;
+        display: inline-block;
+        .lte-ie7 &{
+            zoom: 1;
+            display: inline;
+        }
+    }
+    .inv-slider-pager-active {
+        // ... //
+        a {
+            // ... //
+            font-weight: bold;
+            color: red;    
+        }
+        span {
+            // ... //
+        }
+    }
+}

@@ -1,0 +1,38 @@
+// import settings
+$icons-spacing: 20px;
+
+@import 'icons/*.png';
+
+// custom settings
+$default-padding: 5px;
+
+// Get a list of the sprite map image names
+$icons: sprite_names($icons-sprites);
+
+// Generate all .icon-xx classes
+@each $icon in $icons {
+    .icon-#{$icon} {
+        @include icons-sprite($icon, $offset-y: 2px);
+        padding-left: icons-sprite-width($icon) + $default-padding;
+    }
+    .icon.icon-#{$icon} {
+        width: icons-sprite-width($icon);
+        height: icons-sprite-height($icon);
+        padding: 0;
+        display: inline-block;
+    }
+}
+
+.icon {
+    &.icon-left {
+        padding-right: 5px;
+    }
+    &.icon-right {
+        padding-left: 5px;
+    }
+}
+
+.icon-telephone {
+    padding-top: 1px;
+    padding-bottom: 1px;
+} 

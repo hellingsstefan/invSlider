@@ -1,0 +1,24 @@
+/* line 1, ../../sass/components/forms.scss */
+form {
+  width: 75%; }
+  /* line 9, ../../sass/components/forms.scss */
+  form input[type=text],
+  form input[type=email],
+  form textarea {
+    display: block;
+    width: 350px;
+    margin: 0 0 b(1) 0;
+    padding: 5px;
+    border: 1px solid gray; }
+  /* line 18, ../../sass/components/forms.scss */
+  form label,
+  form .label {
+    display: inline-block;
+    margin: b(1) 0; }
+  /* line 24, ../../sass/components/forms.scss */
+  form .checkboxes label {
+    margin: 0 0 0 b(1); }
+  /* line 30, ../../sass/components/forms.scss */
+  form input[type=submit],
+  form button {
+    margin: b(1) 0; }

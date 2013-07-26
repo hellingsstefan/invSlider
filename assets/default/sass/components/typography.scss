@@ -1,0 +1,85 @@
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-weight: normal;
+}
+
+h1 {
+    @extend .xxl-font;
+    height: 50px;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 50px;
+    color: $blue;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+h2 {
+    @extend .xl-font;
+    color: #333;
+    font-weight: bold;
+    span.emphasize {
+        font-style: normal;
+        color: $blue;
+    }
+}
+h4, h5, h6 {
+    @extend .l-font;
+}
+
+p {
+    @extend .font;
+    margin: 0;
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+strong, .strong, .bold {
+    font-weight: bold;
+}
+
+em, .emphasize, .italic {
+    font-style: italic;
+}
+
+// Links
+a {
+    color: $link-color;
+    &:hover, &:focus {
+        color: darken($link-color, 10%);
+    }
+    &:active {
+        color: darken($link-color, 20%);
+    }
+}
+
+// Lists
+ul, ol {
+    @extend .font;
+    color: $text-color;
+    list-style: none;
+}
+ol {
+    margin-left: 20px; //overwrite .spacing
+    list-style: decimal;
+    li {
+        margin: 0 0 10px 0;
+        padding: 0;
+    }
+}
+ul li {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+// font-sizes
+.xxl-font { font-size: 24px; }
+.xl-font {  font-size: 17px; line-height: 22px; }
+.l-font {   font-size: 16px; }
+.m-font {   font-size: 15px; }
+.r-font {   font-size: 14px; }
+.font {     font-size: 13px; line-height: 20px; }
+.s-font {   font-size: 12px; }
+.xs-font {  font-size: 11px; }

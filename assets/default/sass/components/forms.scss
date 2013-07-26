@@ -1,0 +1,92 @@
+form {
+    @extend .spacing;
+    @include box-sizing(border-box);
+    width: 100%;
+    .input {
+        @extend .clearfix;
+    }
+
+    input[type=text],
+    input[type=email],
+    textarea {
+        @include box-sizing(border-box);
+        display: block;
+        width: 100%;
+        margin: 0 0 4px 0;
+        padding: 5px;
+        border: 1px solid #cdcdcd;
+    }
+
+    input[type=text],
+    input[type=email] {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    textarea {
+        min-height: 120px;
+    }
+
+    label,
+    .label {
+        margin: 0 0 5px 0;
+        display: block;
+        cursor: pointer;
+    }
+
+    .select {
+        label, select {
+            width: auto;
+            display: inline-block;
+        }
+    }
+
+    .checkboxes, .radio-group {
+        label {
+            margin: 0 0 0 b(1);
+            display: inline-block;
+        }
+    }
+
+    input[type=submit],
+    button {
+        margin: b(1) 0;
+    }
+
+    .input {
+        margin-bottom: 10px;
+    }
+
+    .error {
+        input {
+            @extend .font;
+            border: 3px solid #bc6a6c;
+            background-color: #fff5f5;
+            color: #990000;
+        }
+    }
+    span.error {
+        @extend .xs-font;
+        @extend .icon-warning;
+        display: block;
+        margin-left: 7px;
+    }
+
+    .actions {
+        text-align: center;
+    }
+
+    &.search-postal {
+        padding-top: 20px;
+        background-color: #f7f7f7;
+        border-top: 1px solid #cecece;
+        border-bottom: 1px solid #cecece;
+        .input label {
+            @extend .xl-font;
+            color: #333333;
+        }
+        .actions {
+            text-align: left;
+        }
+    }
+}
