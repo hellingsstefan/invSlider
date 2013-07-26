@@ -1,1 +1,0 @@
-/* Inventis Content Slider *//* Author: Stefan */(function(e){e.fn.contentSlider=function(){var t=e.extend({},options),n={};return this.each(function(){})}})(jQuery);

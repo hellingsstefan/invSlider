@@ -6,7 +6,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    @extend .xxl-font;
     height: 50px;
     margin: 0;
     padding-top: 0;
@@ -17,7 +16,6 @@ h1 {
 }
 
 h2 {
-    @extend .xl-font;
     color: #333;
     font-weight: bold;
     span.emphasize {
@@ -26,14 +24,13 @@ h2 {
     }
 }
 h4, h5, h6 {
-    @extend .l-font;
 }
 
 p {
-    @extend .font;
     margin: 0;
     padding-top: 11px;
     padding-bottom: 11px;
+    margin-bottom: 20px;
 }
 
 strong, .strong, .bold {
@@ -57,7 +54,6 @@ a {
 
 // Lists
 ul, ol {
-    @extend .font;
     color: $text-color;
     list-style: none;
 }
@@ -73,13 +69,3 @@ ul li {
     margin: 0 0 10px 0;
     padding: 0;
 }
-
-// font-sizes
-.xxl-font { font-size: 24px; }
-.xl-font {  font-size: 17px; line-height: 22px; }
-.l-font {   font-size: 16px; }
-.m-font {   font-size: 15px; }
-.r-font {   font-size: 14px; }
-.font {     font-size: 13px; line-height: 20px; }
-.s-font {   font-size: 12px; }
-.xs-font {  font-size: 11px; }

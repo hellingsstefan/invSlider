@@ -17,9 +17,6 @@
             pagerContainer: '',     // Selector: Where auto generated pager should be appended to, default is after the slider
             prevControl: '',        // Selector: Declare previous slide trigger
             nextControl: '',        // Selector: Declare next slide trigger
-            pause: false,           // Boolean: Pause on hover, true or false
-            pauseControls: true,    // Boolean: Pause when hovering controls, true or false
-            manualControls: '',     // Selector: Declare custom pager navigation
             before: $.noop,         // Function: Before callback
             after: $.noop           // Function: After callback
         }, options);

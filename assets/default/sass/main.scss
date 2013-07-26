@@ -1,6 +1,7 @@
+// MAIN.SCSS
+
 @import "compass/utilities";
 @import "compass/css3";
-
 
 // vars
 $base-font-family: 'Arial', sans-serif;
@@ -11,8 +12,6 @@ $baseline: $base-line-height / 3;
 $white:         #fff;
 $black:         #000;
 $blue:          #234e95;
-$dark-blue:     #062f62;
-$header-blue:   #005296;
 $text-color:    #606060;
 $link-color:    #0e4888;
 
@@ -47,6 +46,10 @@ html {
     height: 100%;
 }
 
+*, *:before, *:after {
+    @include box-sizing( border-box );
+}
+
 .wrapper {
     width: 600px;
     margin: 0 auto;
@@ -54,10 +57,15 @@ html {
     background-color: $white;
 }
 
-// floats
-.left {
-    float: left;
-}
-.right {
-    float: right;
+pre {
+    overflow: auto;
+
+    code {
+        background: #272822;
+        padding: 15px;
+        white-space: pre;
+        overflow: auto;
+        display: block;
+        color: #999;
+    }
 }

@@ -31,95 +31,87 @@
 <body>
 <div class="wrapper">
 
-    <div id="pagerContainer">
-        <!-- code -->
-    </div><!-- /#pagerContainer -->
     <div class="inv-slider">
-
         <section>
-            <h1>Slide 1</h1>
-            <h2>Secondary title</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </section>
-
-        <div>
-            <h1>Slide 2</h1>
-            <h2>Secondary title</h2>
-            <h3>Tertiary title</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            <h1>invSlider plugin</h1>
+            <h2>This plugin requires:</h2>
             <ul>
-                <li>1</li>
-                <li>
-                    2
-                    <ul>
-                        <li>2.1</li>
-                        <li>2.2</li>
-                    </ul>
-                </li>
-                <li>3</li>
+                <li><a target="_blank" href="http://api.jquery.com/">jQuery</a></li>
+                <li><a target="_blank" href="http://modernizr.com/download/#-csstransitions-touch">Modernizr (with -touch and -csstransition options)</a></li>
+                <li>The invSlider CSS file</li>
             </ul>
-        </div>
 
+            <h2>Features:</h2>
+            <ul>
+                <li>Performant: Uses css transitions</li>
+                <li>jQuery fallback for bad/old browsers</li>
+                <li>Multiple instances possible</li>
+                <li>Set Custom controllers if so desired</li>
+                <li>Easy to use</li>
+            </ul>
+        </section>
+        
         <section>
-            <h1>Slide 3</h1>
-            <form>
-                <div class="input">
-                    <label for="frm_name">Name:</label>
-                    <input type="text" name="name" id="frm_name" placeholder="e.g. John Doe" />
-                </div>
-                <div class="input">
-                    <label for="frm_email">E-mail:</label>
-                    <input type="email" name="email" id="frm_email" />
-                </div>
-                <div class="input">
-                    <label for="frm_message">Message:</label>
-                    <textarea name="message" id="frm_message"></textarea>
-                </div>
-                <div class="input">
-                    <span class="label">Gender:</span>
-                    <div class="checkboxes">
-                        <input type="radio" name="gender" value="m" id="frm_gender_m" />
-                        <label for="frm_gender_m">Male</label><br />
-                        <input type="radio" name="gender" value="f" id="frm_gender_f" />
-                        <label for="frm_gender_f">Female</label>
-                    </div>
-                </div>
-                <div class="input actions">
-                    <button>Send</button>
-                </div>
-            </form>
+            <h1>invSlider plugin</h1>
+            <h2>Basic usage:</h2>
+            <h3>Include the required scripts:</h3>
+            <pre>
+                <code>
+&lt;!-- invSlider css --&gt;
+&lt;link rel="stylesheet" href="css/main.css" /&gt;
+
+&lt;!-- jQuery --&gt;
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;window.jQuery || document.write('&lt;script src="/assets/default/js/vendor/jquery-1.9.1.min.js"&gt;\x3C/script&gt;')&lt;/script&gt;
+
+&lt;!-- invSlider --&gt;
+&lt;script src="js/invSlider.min.js"&gt;&lt;/script&gt;
+                </code>
+            </pre>
+            
+            <h3>HTML Markup</h3>
+            <pre><code>
+&lt;div class="my-slider"&gt;
+    &lt;div&gt;
+        [...]
+    &lt;/div&gt;
+    &lt;section&gt;
+        [...]
+    &lt;/section&gt;
+    &lt;img src="http://placehold.it/200x80" width="200" height="80" alt="Placeholder image"&gt;
+&lt;/div&gt;
+            </code></pre>
+            <p>
+                The HTML markup does not realy matter, every direct child inside the slider becomes a slide.
+            </p>
+            
+            <h3>jQuery:</h3>
+            <pre><code>
+$('.my-slider').invSlider();
+            </code></pre>
         </section>
 
         <section>
-            <h1>Slide 4</h1>
-            <img src="http://placekitten.com/600/300" alt="image of a kitten">
+            <h1>invSlider plugin</h1>
+            <h2>Options:</h2>
+            <pre><code>
+$('.my-slider').invSlider({
+    auto: true,             // Animate automatically, true or false
+    speed: 1000,            // Speed of the transition, in milliseconds (Be sure that the css file has the same value)
+    timeout: 4000,          // Time between slide transitions, in milliseconds
+    pager: false,           // Show pager, true or false
+    pagerContainer: '',     // Where auto generated pager should be appended to, default is after the slider
+    prevControl: '',        // Declare previous slide trigger
+    nextControl: '',        // Declare next slide trigger
+    before: $.noop,         // Before callback
+    after: $.noop           // After callback
+});
+            </code></pre>
         </section>
-
-        <img src="http://placekitten.com/600/400" alt="image of a kitten">
 
     </div><!-- /.inv-slider -->
 
     <div class="clearfix">&nbsp;</div>
-
-    <a href="#" class="prev"> prev </a>
-    <a href="#" class="next"> next </a>
-
-    <div class="clearfix">&nbsp;</div>
-
-    <section class="inv-slider2">
-        <img src="http://placekitten.com/600/400" alt="image of a kitten">
-        <img src="http://placekitten.com/600/420" alt="image of a kitten">
-        <img src="http://placekitten.com/600/440" alt="image of a kitten">
-        <img src="http://placekitten.com/600/460" alt="image of a kitten">
-        <img src="http://placekitten.com/600/480" alt="image of a kitten">
-    </section>
 
 </div><!-- /.wrapper -->
 
