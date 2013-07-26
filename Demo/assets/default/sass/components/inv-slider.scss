@@ -1,5 +1,10 @@
-// Inventis Content Slider
+// invSlider scss
 // Author: Stefan
+// v1
+// Be Aware! This file uses the compass library
+
+@import "compass/utilities";
+@import "compass/css3";
 
 .inv-slider {
     width: 100%;
@@ -36,30 +41,26 @@
 
 // Pager
 .inv-slider-pager {
-    // ... //
     width: 100%;
     margin: 0;
     padding: 0;
     text-align: center;
     list-style: none;
     li {
-        // ... //
         padding: 10px;
         display: inline-block;
+        // I used this class in my html tag in IE7
         .lte-ie7 &{
             zoom: 1;
             display: inline;
         }
     }
     .inv-slider-pager-active {
-        // ... //
         a {
-            // ... //
             font-weight: bold;
             color: red;    
         }
         span {
-            // ... //
         }
     }
 }

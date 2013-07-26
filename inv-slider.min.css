@@ -1,0 +1,5 @@
+/* invSlider css
+ * Author: Stefan
+ * v1
+ */
+.inv-slider {width: 100%; position: relative; overflow: hidden; } .inv-slider > *, .inv-slider .inv-slider-hidden {filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; width: 100%; position: absolute; left: 0; top: 0; float: none; z-index: 0; } .inv-slider .inv-slider-visible {filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; position: relative; float: left; z-index: 1; } .inv-slider > *, .inv-slider .inv-slider-transition-duration {-webkit-transition-property: opacity; -moz-transition-property: opacity; -o-transition-property: opacity; transition-property: opacity; -webkit-transition-duration: 1000ms; -moz-transition-duration: 1000ms; -o-transition-duration: 1000ms; transition-duration: 1000ms; } .inv-slider-pager {width: 100%; margin: 0; padding: 0; text-align: center; list-style: none; } .inv-slider-pager li {padding: 10px; display: inline-block; } .lte-ie7 .inv-slider-pager li {zoom: 1; display: inline; } .inv-slider-pager .inv-slider-pager-active a {font-weight: bold; color: red; }
