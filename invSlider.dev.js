@@ -10,16 +10,19 @@
 
         // Default settings
         var settings = $.extend({
-            auto: true,             // Boolean: Animate automatically, true or false
-            speed: 1000,            // Integer: Speed of the transition, in milliseconds
-            timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
-            pager: false,           // Boolean: Show pager, true or false
-            pause: false,           // Boolean: Pause on hover, true or false
-            pagerContainer: '',     // Selector: Where auto generated pager should be appended to, default is after the slider
-            prevControl: '',        // Selector: Declare previous slide trigger
-            nextControl: '',        // Selector: Declare next slide trigger
-            before: $.noop,         // Function: Before callback
-            after: $.noop           // Function: After callback
+            auto: true,                             // Boolean: Animate automatically, true or false
+            speed: 1000,                            // Integer: Speed of the transition, in milliseconds
+            timeout: 4000,                          // Integer: Time between slide transitions, in milliseconds
+            pager: false,                           // Boolean: Show pager, true or false
+            pause: false,                           // Boolean: Pause on hover, true or false
+            pagerContainer: '',                     // Selector: Where auto generated pager should be appended to, default is after the slider
+            prevControl: '',                        // Selector: Declare previous slide trigger
+            nextControl: '',                        // Selector: Declare next slide trigger
+            transitionClass: 'inv-slider-visible',  // Selector: Declare a css transition class to use (default 'inv-slider-visible')
+            prevClass: '',                          // Selector: Declare a css transition class to for previous item
+            nextClass: '',                          // Selector: Declare a css transition class to for next
+            before: $.noop,                         // Function: Before callback
+            after: $.noop                           // Function: After callback
         }, options);
 
         // Check if Modernizr plugin is installed
@@ -45,8 +48,6 @@
             // HELPERS
             $slide = $this.children(),
             length = $slide.length,
-            fadeTime = settings.speed,
-            waitTime = settings.timeout,
             currentIndex = 0,
             prevIndex = length > 1 ? length - 1 : 0,
             nextIndex = length > 1 ? currentIndex + 1 : 0,
@@ -55,43 +56,50 @@
 
             // METHODS:
             // Set Previous and Next slide index
-            setPrevNextIndex = function () {
-                prevIndex = currentIndex - 1 < 0 ? length - 1 : currentIndex - 1;
-                nextIndex = currentIndex + 1 < length ? currentIndex + 1 : 0;
+            setPrevNextIndex = function (index) {
+                prevIndex = index - 1 < 0 ? length - 1 : index - 1;
+                nextIndex = index + 1 < length ? index + 1 : 0;
             },
 
             // Slide to
             slideTo = function (index) {
                 settings.before(index); // Pass index for possible use in called function
 
+                currentIndex = index;
+                setPrevNextIndex(index);
+
                 // If CSS3 transitions are supported
                 if (supportsTransitions) {
                     $slide
-                        .removeClass(prefix+'-visible')
+                        .removeClass(settings.transitionClass + ' ' + settings.prevClass + ' ' + settings.nextClass)
                         .eq(index)
-                        .addClass(prefix+'-visible');
-                    
+                        .addClass(settings.transitionClass)
+                        .end()
+                        .eq(prevIndex)
+                        .addClass(settings.prevClass)
+                        .end()
+                        .eq(nextIndex)
+                        .addClass(settings.nextClass);
+
                     setTimeout(function () {
                         settings.after(index);
-                    }, fadeTime);
+                    }, settings.speed);
 
                 // If not, use jQuery fallback
                 } else {
                     $slide
                         .stop()
-                        .fadeOut(fadeTime, function () {
-                            $(this).removeClass(prefix+'-visible');
+                        .fadeOut(settings.speed, function () {
+                            $(this).removeClass(settings.transitionClass);
                         })
                         .eq(index)
-                        .fadeIn(fadeTime, function () {
-                            $(this).addClass(prefix+'-visible');
+                        .fadeIn(settings.speed, function () {
+                            $(this).addClass(settings.transitionClass);
                                     
                             settings.after(index); // Pass index for possible use in called function
                         });
                 }
                 
-                currentIndex = index;
-                setPrevNextIndex();
                 if (settings.pager) {
                     updatePager(currentIndex);
                 }
@@ -104,7 +112,7 @@
                     $slide.stop(true, true);
 
                     slideTo(nextIndex);
-                }, waitTime);
+                }, settings.timeout);
             },
 
             // Restarting cycle
@@ -133,15 +141,20 @@
             // Hide all slides, then show first one
             $slide
                 .eq(0)
-                .addClass(prefix+'-visible');
+                .addClass(settings.transitionClass)
+                .end()
+                .eq(prevIndex)
+                .addClass(settings.prevClass)
+                .end()
+                .eq(nextIndex)
+                .addClass(settings.nextClass);
 
             // Only run if there's more than one slide
             if (length > 1 && settings.auto) {
                 // Make sure the timeout is at least 100ms longer than the transition
-                if (waitTime < fadeTime + 100) {
+                if (settings.timeout < settings.speed + 100) {
                     return;
                 }
-
                 // Init cycle
                 startCycle();
             }

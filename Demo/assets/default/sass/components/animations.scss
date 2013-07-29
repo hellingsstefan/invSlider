@@ -1,20 +1,49 @@
-@-webkit-keyframes grow {
-	0% { height: 0px; }
-	50% { height: 0px; }
-	100% { height: 40px; }
+// ANIMATION MIXIN
+
+@mixin animation( $name, $duration: .4s, $timing-function: ease, $delay: initial, $iteration-count: 1, $direction: initial, $fill-mode: initial ) {
+   animation-name: $name;
+   animation-duration: $duration;
+   animation-timing-function: $timing-function; 
+   animation-delay: $delay;           
+   animation-iteration-count: $iteration-count;  
+   animation-direction: $direction;
+   animation-fill-mode: $fill-mode;
+
+   -moz-animation-name: $name;
+   -moz-animation-duration: $duration;
+   -moz-animation-timing-function: $timing-function; 
+   -moz-animation-delay: $delay;           
+   -moz-animation-iteration-count: $iteration-count;  
+   -moz-animation-direction: $direction;
+   -moz-animation-fill-mode: $fill-mode;
+
+   -webkit-animation-name: $name;
+   -webkit-animation-duration: $duration;
+   -webkit-animation-timing-function: $timing-function; 
+   -webkit-animation-delay: $delay;           
+   -webkit-animation-iteration-count: $iteration-count;  
+   -webkit-animation-direction: $direction;
+   -webkit-animation-fill-mode: $fill-mode;
 }
-@-ms-keyframes grow {
-	0% { height: 0px; }
-	50% { height: 0px; }
-	100% { height: 40px; }
+
+@mixin keyframes( $name ) {
+    @keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
 }
-@-moz-keyframes grow {
-	0% { height: 0px; }
-	50% { height: 0px; }
-	100% { height: 40px; }
-}
-@keyframes grow {
-	0% { height: 0px; }
-	50% { height: 0px; }
-	100% { height: 40px; }
+
+@include keyframes( test ) {
+    from {
+        @include translate3d(100%,0,0);
+    }
+    to {
+        @include opacity(1);
+        @include translate3d(0,0,0);
+    }
 }

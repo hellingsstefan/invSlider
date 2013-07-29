@@ -17,4 +17,10 @@ $(document).ready(function(){
         pause: true
     });
 
+    $('.img-slider2').invSlider({
+        transitionClass: 'inv-slider-custom',
+        prevClass: 'inv-slider-prev',
+        nextClass: 'inv-slider-next'
+    });
+
 });

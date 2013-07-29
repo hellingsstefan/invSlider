@@ -35,13 +35,31 @@
         position: relative;
         float: left;
         z-index: 1;
-    }
+    }    
 
     // Transitions
     > *,
     .inv-slider-transition-duration {
-        @include transition-property( opacity );
         @include transition-duration( 1000ms );
+    }
+
+    // Custom transitions
+    .inv-slider-custom {
+        @include translate3d(0, 0, 0);
+        @include opacity(1);
+        position: relative;
+        float: left;
+        z-index: 1;
+    }
+
+    .inv-slider-prev {
+        @include translate3d(-100%, 0, 0);
+        @include opacity(0);
+    }
+
+    .inv-slider-next {
+        @include translate3d(100%, 0, 0);
+        @include opacity(0);
     }
 
 }
