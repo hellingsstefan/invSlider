@@ -9,18 +9,20 @@ $(document).ready(function(){
         auto: false,
         pager: true,
         prevControl: '#prev',
-        nextControl: '#next',
-        pagerContainer: '#pager-container, .pager'
+        nextControl: '#next'
     }).addClass('chainabilityMaintained');
 
     $('.img-slider').invSlider({
-        pause: true
+        pause: true,
+        pager: true,
+        pagerContainer: '.p1, #p1'
     });
 
     $('.img-slider2').invSlider({
         transitionClass: 'inv-slider-custom',
         prevClass: 'inv-slider-prev',
-        nextClass: 'inv-slider-next'
+        nextClass: 'inv-slider-next',
+        pager: true
     });
 
 });
