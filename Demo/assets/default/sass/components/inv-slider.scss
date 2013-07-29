@@ -3,9 +3,6 @@
 // v1
 // Be Aware! This file uses the compass library
 
-@import "compass/utilities";
-@import "compass/css3";
-
 .inv-slider {
     width: 100%;
     position: relative;
@@ -21,6 +18,16 @@
         top: 0;
         float: none;
         z-index: 0;
+
+        // To make images responsive
+        img {
+            display: block;
+            height: auto;
+            float: left;
+            width: 100%;
+            border: 0;
+        }
+
     }
 
     .inv-slider-visible {
@@ -41,9 +48,10 @@
 
 // Pager
 .inv-slider-pager {
-    width: 100%;
+    width: auto;
     margin: 0;
     padding: 0;
+    display: inline;
     text-align: center;
     list-style: none;
     li {

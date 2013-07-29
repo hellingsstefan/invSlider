@@ -14,6 +14,7 @@
             speed: 1000,            // Integer: Speed of the transition, in milliseconds
             timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
             pager: false,           // Boolean: Show pager, true or false
+            pause: false,           // Boolean: Pause on hover, true or false
             pagerContainer: '',     // Selector: Where auto generated pager should be appended to, default is after the slider
             prevControl: '',        // Selector: Declare previous slide trigger
             nextControl: '',        // Selector: Declare next slide trigger
@@ -38,6 +39,7 @@
             var $this = $(this), // This slider
 
             // LOCAL VARIABLES
+            prefix = 'inv-slider',
             customControllers = new Array(settings.prevControl, settings.nextControl),
 
             // HELPERS
@@ -49,6 +51,7 @@
             prevIndex = length > 1 ? length - 1 : 0,
             nextIndex = length > 1 ? currentIndex + 1 : 0,
             $pager = '',
+            rotate,
 
             // METHODS:
             // Set Previous and Next slide index
@@ -64,9 +67,9 @@
                 // If CSS3 transitions are supported
                 if (supportsTransitions) {
                     $slide
-                        .removeClass('inv-slider-visible')
+                        .removeClass(prefix+'-visible')
                         .eq(index)
-                        .addClass('inv-slider-visible');
+                        .addClass(prefix+'-visible');
                     
                     setTimeout(function () {
                         settings.after(index);
@@ -77,11 +80,11 @@
                     $slide
                         .stop()
                         .fadeOut(fadeTime, function () {
-                            $(this).removeClass('inv-slider-visible');
+                            $(this).removeClass(prefix+'-visible');
                         })
                         .eq(index)
                         .fadeIn(fadeTime, function () {
-                            $(this).addClass('inv-slider-visible');
+                            $(this).addClass(prefix+'-visible');
                                     
                             settings.after(index); // Pass index for possible use in called function
                         });
@@ -96,7 +99,7 @@
 
             // Start cycle
             startCycle = function () {
-                setInterval(function () {
+                rotate = setInterval(function () {
                     // Clear the event queue
                     $slide.stop(true, true);
 
@@ -104,23 +107,33 @@
                 }, waitTime);
             },
 
+            // Restarting cycle
+            restartCycle = function () {
+                if (settings.auto) {
+                    // Stop
+                    clearInterval(rotate);
+                    // Restart
+                    startCycle();
+                }
+            };
+
             // Update pager method only used if there is a pager
             updatePager = function (index) {
                 $pager
                     .children()
-                    .removeClass('inv-slider-pager-active')
+                    .removeClass(prefix+'-pager-active')
                     .eq(index)
-                    .addClass('inv-slider-pager-active');
+                    .addClass(prefix+'-pager-active');
             };
 
             // Give this slider the inv-slider css class
             $this
-                .addClass('inv-slider');
+                .addClass(prefix);
 
             // Hide all slides, then show first one
             $slide
                 .eq(0)
-                .addClass('inv-slider-visible');
+                .addClass(prefix+'-visible');
 
             // Only run if there's more than one slide
             if (length > 1 && settings.auto) {
@@ -143,13 +156,12 @@
                 });
             });
 
+            // Generate pager
             if (settings.pager) {
-                $pager = $('<ul class="inv-slider-pager">');
+                $pager = $('<ul class="'+prefix+'-pager">');
                 var tabs = '';
                 for ( var i = 1 ; i <= length ; i++ )  {
-                    tabs += '<li><a href="#"><span>';
-                    tabs += i;
-                    tabs += '</span></a></li>';
+                    tabs += '<li><a href="#"><span>' + i + '</span></a></li>';
                 }
                 $pager.append(tabs);
 
@@ -171,6 +183,15 @@
                         // Slide to prev/next slide
                         slideTo( (index) );
                     });
+                });
+            }
+
+            // Pause on hover
+            if (settings.pause) {
+                $this.hover(function () {
+                    clearInterval(rotate);
+                }, function () {
+                    restartCycle();
                 });
             }
 

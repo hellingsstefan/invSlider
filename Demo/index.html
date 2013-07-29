@@ -6,7 +6,7 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns#">
     <meta charset="utf-8">
 
-    <title>Front-end styleguide - Inventis</title>
+    <title>InvSlider Demo</title>
     <meta name="description" content="">
 
     <!-- iPhone Optimized -->
@@ -31,9 +31,14 @@
 <body>
 <div class="wrapper">
 
+    <h1>invSlider plugin</h1>
+    <div class="custom-controllers">
+        <a href="#" id="prev">&laquo; Previous</a>
+        <span id="pager-container"></span><!-- /.custom-pagination -->
+        <a href="#" id="next">Next &raquo;</a>
+    </div><!-- /.custom-controllers -->
     <div class="inv-slider">
         <section>
-            <h1>invSlider plugin</h1>
             <h2>This plugin requires:</h2>
             <ul>
                 <li><a target="_blank" href="http://api.jquery.com/">jQuery</a></li>
@@ -52,7 +57,6 @@
         </section>
         
         <section>
-            <h1>invSlider plugin</h1>
             <h2>Basic usage:</h2>
             <h3>Include the required scripts:</h3>
             <pre>
@@ -92,7 +96,6 @@ $('.my-slider').invSlider();
         </section>
 
         <section>
-            <h1>invSlider plugin</h1>
             <h2>Options:</h2>
             <pre><code>
 $('.my-slider').invSlider({
@@ -111,8 +114,26 @@ $('.my-slider').invSlider({
 
     </div><!-- /.inv-slider -->
 
+    <div class="pager"></div><!-- /.pager -->
+
     <div class="clearfix">&nbsp;</div>
 
+</div><!-- /.wrapper -->
+
+<br/><br/>
+
+<div class="wrapper">
+    <h1>Image demo</h1>
+    <div class="img-slider">
+        <img src="http://placehold.it/600x400&text=ImgNr1" alt="image">
+        <img src="http://placehold.it/600x400&text=ImgNr2" alt="image">
+        <img src="http://placehold.it/600x400&text=ImgNr3" alt="image">
+        <img src="http://placehold.it/600x400&text=ImgNr4" alt="image">
+        <img src="http://placehold.it/600x400&text=ImgNr5" alt="image">
+        <img src="http://placehold.it/600x400&text=ImgNr6" alt="image">
+        <img src="http://placehold.it/600x400&text=ImgNr7" alt="image">
+        <img src="http://placehold.it/600x400&text=ImgNr8" alt="image">
+    </div><!-- /.img-slider -->
 </div><!-- /.wrapper -->
 
 <!-- JavaScript at the bottom for fast page loading -->
@@ -122,7 +143,7 @@ $('.my-slider').invSlider({
 <script>window.jQuery || document.write('<script src="/assets/default/js/vendor/jquery-1.9.1.min.js">\x3C/script>')</script>
 
 <!-- Our own Scripts -->
-<script src="assets/default/js/invSlider.dev.js"></script>
+<script src="assets/default/js/invSlider.min.js"></script>
 <script src="assets/default/js/main.js"></script>
 
 </body>
