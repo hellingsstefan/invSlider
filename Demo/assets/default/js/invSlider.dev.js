@@ -16,7 +16,7 @@
             speed: 1000,                            // Integer: Speed of the transition, in milliseconds
             timeout: 4000,                          // Integer: Time between slide transitions, in milliseconds
             pager: false,                           // Boolean: Show pager, true or false
-            pause: false,                           // Boolean: Pause on hover, true or false
+            pause: true,                            // Boolean: Pause on hover, true or false
             pagerContainer: '',                     // Selector: Where auto generated pager should be appended to, default is after the slider
             prevControl: '',                        // Selector: Declare previous slide trigger
             nextControl: '',                        // Selector: Declare next slide trigger
@@ -45,15 +45,16 @@
 
             // LOCAL VARIABLES
             prefix = 'inv-slider',
-            customControllers = new Array(settings.prevControl, settings.nextControl),
+            customControllers = [settings.prevControl, settings.nextControl],
 
             // HELPERS
-            $slide = $this.children(),
-            length = $slide.length,
+            $slides = $this.children(),
+            length = $slides.length,
             currentIndex = 0,
             prevIndex = length > 1 ? length - 1 : 0,
             nextIndex = length > 1 ? currentIndex + 1 : 0,
-            $pager = $('<ul class="'+prefix+'-pager">'),
+            $pager,
+            $pagers,
             rotate,
 
             // METHODS:
@@ -72,7 +73,7 @@
 
                 // If CSS3 transitions are supported
                 if (supportsTransitions) {
-                    $slide
+                    $slides
                         .removeClass(settings.transitionClass + ' ' + settings.prevClass + ' ' + settings.nextClass)
                         .eq(index)
                         .addClass(settings.transitionClass)
@@ -89,7 +90,7 @@
 
                 // If not, use jQuery fallback
                 } else {
-                    $slide
+                    $slides
                         .stop()
                         .fadeOut(settings.speed, function () {
                             $(this).removeClass(settings.transitionClass);
@@ -111,7 +112,7 @@
             startCycle = function () {
                 rotate = setInterval(function () {
                     // Clear the event queue
-                    $slide.stop(true, true);
+                    $slides.stop(true, true);
 
                     slideTo(nextIndex);
                 }, settings.timeout);
@@ -125,15 +126,17 @@
                     // Restart
                     startCycle();
                 }
-            };
+            },
 
             // Update pager method only used if there is a pager
             updatePager = function (index) {
-                $pager
-                    .parents('li')
-                    .removeClass(prefix+'-pager-active')
-                    .eq(index)
-                    .addClass(prefix+'-pager-active');
+                $.each($pagers, function() {
+                    $(this)
+                        .find('li')
+                        .removeClass(prefix+'-pager-active')
+                        .eq(index)
+                        .addClass(prefix+'-pager-active');
+                }); 
             };
 
             // Give this slider the inv-slider css class
@@ -141,7 +144,7 @@
                 .addClass(prefix);
 
             // Hide all slides, then show first one
-            $slide
+            $slides
                 .eq(0)
                 .addClass(settings.transitionClass)
                 .end()
@@ -173,6 +176,7 @@
 
             // Generate pager
             if (settings.pager) {
+                $pager = $('<ul class="'+prefix+'-pager">');
                 var tabs = '';
                 for ( var i = 1 ; i <= length ; i++ )  {
                     tabs += '<li><a href="#"><span>' + i + '</span></a></li>';
@@ -189,15 +193,16 @@
                         slideTo( index );
                     });
                 });
+                
+                if (settings.pagerContainer) {
+                    $pagers = $(settings.pagerContainer).append($pager);
+                } else {
+                    $this.after($pager);
+                    $pagers = $pager;
+                }
 
                 // Set correct tab to active
                 updatePager(currentIndex);
-                
-                if (settings.pagerContainer) {
-                    $(settings.pagerContainer).append($pager);
-                } else {
-                    $this.after($pager);
-                }
             }
 
             // Pause on hover
